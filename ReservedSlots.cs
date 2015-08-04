@@ -39,41 +39,34 @@ namespace ReservedSlots
             {
                 int numPlayers = Steam.Players.Count;
                 int maxPlayers = Steam.maxPlayers;
-                switch (Instance.Configuration.Instance.AllowFill)
+                if (!Instance.Configuration.Instance.AllowFill)
                 {
-                    case false:
-                        // Don't allow the slots to fill.
-                        if (numPlayers + Instance.Configuration.Instance.ReservedSlotCount >= maxPlayers)
+                    // Don't allow the slots to fill.
+                    if (numPlayers + Instance.Configuration.Instance.ReservedSlotCount >= maxPlayers)
+                    {
+                        if (!CheckReserved(CSteamID))
                         {
-                            if (!CheckReserved(CSteamID))
-                            {
-#if DEBUG
-                                Logger.Log(string.Format("Rejected: {0}, curplayercount: {1}", CSteamID.ToString(), numPlayers.ToString()));
-#endif
-                                rejectionReason = ESteamRejection.SERVER_FULL;
-                            }
+                            rejectionReason = ESteamRejection.SERVER_FULL;
                         }
-                        break;
-                    default:
-                        // Allow them to fill.
-                        foreach (SteamPlayer player in Steam.Players)
+                    }
+                }
+                else
+                {
+                    // Allow them to fill.
+                    foreach (SteamPlayer player in Steam.Players)
+                    {
+                        if (CheckReserved(player.SteamPlayerID.CSteamID))
                         {
-                            if (CheckReserved(player.SteamPlayerID.CSteamID))
-                            {
-                                numPlayers--;
-                            }
+                            numPlayers--;
                         }
-                        if (numPlayers + Instance.Configuration.Instance.ReservedSlotCount >= maxPlayers)
+                    }
+                    if (numPlayers + Instance.Configuration.Instance.ReservedSlotCount >= maxPlayers)
+                    {
+                        if (!CheckReserved(CSteamID))
                         {
-                            if (!CheckReserved(CSteamID))
-                            {
-#if DEBUG
-                                Logger.Log(string.Format("Rejected: {0}, curplayercount: {1}, adjusted: {2}", CSteamID.ToString(), Steam.Players.Count.ToString(), numPlayers.ToString()));
-#endif
-                                rejectionReason = ESteamRejection.SERVER_FULL;
-                            }
+                            rejectionReason = ESteamRejection.SERVER_FULL;
                         }
-                        break;
+                    }
                 }
             }
         }
