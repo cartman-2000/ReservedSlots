@@ -33,6 +33,11 @@ namespace ReservedSlots
             Logger.Log(string.Format("Reserved Slots enabled: {0}, Count: {1}, Allowfill: {2}.", Instance.Configuration.Instance.ReservedSlotEnable, Instance.Configuration.Instance.ReservedSlotCount, Instance.Configuration.Instance.AllowFill));
         }
 
+        protected override void Unload()
+        {
+            UnturnedPermissions.OnJoinRequested -= Events_OnJoinRequested;
+        }
+
         private void Events_OnJoinRequested(CSteamID CSteamID, ref ESteamRejection? rejectionReason)
         {
             if (Instance.Configuration.Instance.ReservedSlotEnable && Instance.Configuration.Instance.ReservedSlotCount > 0 && Instance.Configuration.Instance.Groups != null && Instance.Configuration.Instance.Groups.Count > 0)
