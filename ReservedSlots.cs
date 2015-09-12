@@ -3,23 +3,17 @@ using Rocket.Core.Plugins;
 using Rocket.Unturned.Permissions;
 using SDG.Unturned;
 using Steamworks;
-using Rocket.Core.Serialisation;
 using Rocket.Core;
 using Rocket.API;
+using Rocket.API.Serialisation;
 
 namespace ReservedSlots
 {
     public class RocketPlayer : IRocketPlayer
     {
-        public string Id
-        {
-            get; set;
-        }
-
-        public string DisplayName
-        {
-            get; set;
-        }
+        public string Id { get; set; }
+        public string DisplayName { get; set; }
+        public bool IsAdmin { get; set; }
     }
 
     public class ReservedSlots : RocketPlugin<ReservedSlotsConfig>
@@ -84,7 +78,7 @@ namespace ReservedSlots
             }
             else
             {
-                foreach (RocketPermissionsGroup group in R.Permissions.GetGroups(new RocketPlayer() { Id = CSteamID.ToString(), DisplayName = "" }, true))
+                foreach (RocketPermissionsGroup group in R.Permissions.GetGroups(new RocketPlayer() { Id = CSteamID.ToString() }, true))
                 {
                     if (Instance.Configuration.Instance.Groups.Contains(group.Id))
                     {
