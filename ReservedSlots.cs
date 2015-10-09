@@ -36,8 +36,8 @@ namespace ReservedSlots
         {
             if (Instance.Configuration.Instance.ReservedSlotEnable && Instance.Configuration.Instance.ReservedSlotCount > 0 && Instance.Configuration.Instance.Groups != null && Instance.Configuration.Instance.Groups.Count > 0)
             {
-                int numPlayers = Steam.Players.Count;
-                int maxPlayers = Steam.maxPlayers;
+                int numPlayers = Provider.Players.Count;
+                int maxPlayers = Provider.maxPlayers;
                 if (!Instance.Configuration.Instance.AllowFill)
                 {
                     // Don't allow the slots to fill.
@@ -52,7 +52,7 @@ namespace ReservedSlots
                 else
                 {
                     // Allow them to fill.
-                    foreach (SteamPlayer player in Steam.Players)
+                    foreach (SteamPlayer player in Provider.Players)
                     {
                         if (CheckReserved(player.SteamPlayerID.CSteamID))
                         {
