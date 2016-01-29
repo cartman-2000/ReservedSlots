@@ -6,22 +6,23 @@ namespace ReservedSlots
 {
     public class ReservedSlotsConfig : IRocketPluginConfiguration
     {
-        public bool ReservedSlotEnable;
+        public bool ReservedSlotEnable = true;
+        public bool PrintToRCON = false;
         [XmlArray("Groups"), XmlArrayItem(ElementName = "Group")]
-        public List<string> Groups;
-        public int ReservedSlotCount;
-        public bool AllowFill;
+        public List<string> Groups = new List<string>();
+        public byte ReservedSlotCount = 2;
+        public bool AllowFill = false;
+        public bool AllowDynamicMaxSlot = false;
+        public byte MaxSlotCount = 24;
+        public byte MinSlotCount = 16;
 
         public void LoadDefaults()
         {
-            ReservedSlotEnable = true;
             Groups = new List<string>
             {
                 "moderator",
                 "admin"
             };
-            ReservedSlotCount = 2;
-            AllowFill = false;
         }
     }
 }
