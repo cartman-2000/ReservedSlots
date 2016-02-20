@@ -72,22 +72,15 @@ namespace ReservedSlots
             {
                 curPlayerMax = (byte)(curPlayerNum + Instance.Configuration.Instance.ReservedSlotCount);
                 if (curPlayerMax > lastMaxSlotCount)
-                    RconPrint(CSteamID.Nil, "Max slots increased to: " + curPlayerMax);
+                    UnturnedChat.Say(CSteamID.Nil, "Max slots increased to: " + curPlayerMax);
                 if (curPlayerMax < lastMaxSlotCount)
-                    RconPrint(CSteamID.Nil, "Max slots Decreased to: " + curPlayerMax);
+                    UnturnedChat.Say(CSteamID.Nil, "Max slots Decreased to: " + curPlayerMax);
             }
             if (lastMaxSlotCount != curPlayerMax)
             {
                 Provider.maxPlayers = curPlayerMax;
                 lastMaxSlotCount = curPlayerMax;
             }
-        }
-
-        private static void RconPrint(CSteamID caller, string msg)
-        {
-            if (caller == CSteamID.Nil && R.Settings.Instance.RCON.Enabled && Instance.Configuration.Instance.PrintToRCON)
-                RCONServer.Broadcast(msg);
-            UnturnedChat.Say(caller, msg);
         }
 
         private void Events_OnJoinRequested(CSteamID CSteamID, ref ESteamRejection? rejectionReason)

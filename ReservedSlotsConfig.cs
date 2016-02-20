@@ -7,7 +7,6 @@ namespace ReservedSlots
     public class ReservedSlotsConfig : IRocketPluginConfiguration
     {
         public bool ReservedSlotEnable = true;
-        public bool PrintToRCON = false;
         [XmlArray("Groups"), XmlArrayItem(ElementName = "Group")]
         public List<string> Groups = new List<string>();
         public byte ReservedSlotCount = 2;
