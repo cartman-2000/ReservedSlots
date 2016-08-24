@@ -34,28 +34,23 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>BaseLib\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Lib\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>BaseLib\Assembly-CSharp-firstpass.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Lib\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.API, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rocket.API, Version=2.6.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>BaseLib\Rocket.API.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Lib\Rocket.API.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.Core, Version=2.4.6.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rocket.Core, Version=2.4.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>BaseLib\Rocket.Core.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Lib\Rocket.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.Unturned, Version=4.9.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Rocket.Unturned, Version=4.9.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>BaseLib\Rocket.Unturned.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Lib\Rocket.Unturned.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,8 +60,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>BaseLib\UnityEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Lib\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -75,12 +69,12 @@
     <Compile Include="ReservedSlotsConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BaseLib\Assembly-CSharp-firstpass.dll" />
-    <Content Include="BaseLib\Assembly-CSharp.dll" />
-    <Content Include="BaseLib\Rocket.API.dll" />
-    <Content Include="BaseLib\Rocket.Core.dll" />
-    <Content Include="BaseLib\Rocket.Unturned.dll" />
-    <Content Include="BaseLib\UnityEngine.dll" />
+    <Content Include="Lib\Assembly-CSharp-firstpass.dll" />
+    <Content Include="Lib\Assembly-CSharp.dll" />
+    <Content Include="Lib\Rocket.API.dll" />
+    <Content Include="Lib\Rocket.Core.dll" />
+    <Content Include="Lib\Rocket.Unturned.dll" />
+    <Content Include="Lib\UnityEngine.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
