@@ -62,7 +62,7 @@ namespace ReservedSlots
         private void SetMaxPlayers(bool onDisconnect = false)
         {
             // Minus one if it is coming from disconnect, they are still accounted towards the total player count at this time.
-            int curPlayerNum = Provider.Players.Count - (onDisconnect ? 1 : 0);
+            int curPlayerNum = Provider.clients.Count - (onDisconnect ? 1 : 0);
             byte curPlayerMax = Provider.maxPlayers;
             if (curPlayerNum + Instance.Configuration.Instance.ReservedSlotCount < Instance.Configuration.Instance.MinSlotCount)
                 curPlayerMax = Instance.Configuration.Instance.MinSlotCount;
@@ -87,14 +87,14 @@ namespace ReservedSlots
         {
             if (Instance.Configuration.Instance.ReservedSlotEnable && Instance.Configuration.Instance.ReservedSlotCount > 0 && Instance.Configuration.Instance.Groups != null && Instance.Configuration.Instance.Groups.Count > 0)
             {
-                int numPlayers = Provider.Players.Count;
+                int numPlayers = Provider.clients.Count;
                 byte maxPlayers = Provider.maxPlayers;
                 // Run slot fill calculations, if it is enabled.
                 if (Instance.Configuration.Instance.AllowFill)
                 {
-                    foreach (SteamPlayer player in Provider.Players)
+                    foreach (SteamPlayer player in Provider.clients)
                     {
-                        if (CheckReserved(player.SteamPlayerID.CSteamID))
+                        if (CheckReserved(player.playerID.steamID))
                         {
                             numPlayers--;
                         }
